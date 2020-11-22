@@ -8,7 +8,7 @@
 
       $myposts = get_posts([ 
         'numberposts' => 1,
-        'category_name'      => 'javascript',
+        'category_name'      => 'javascript, css, html, web-design',
       ]);
 
       if( $myposts ){
@@ -26,7 +26,7 @@
         </a>
         <div class="post-text">
           <?php the_category(); ?>
-          <h2 class="post-title"><?php the_title(); ?></h2>
+          <h2 class="post-title"><?php echo mb_strimwidth(get_the_title(), 0, 60, '...'); ?></h2>
           <a href="<?php echo get_the_permalink(); ?>" class="more">Читать далее</a>
         </div>
                     <?php 
@@ -47,6 +47,7 @@
       $myposts = get_posts([ 
         'numberposts' => 5,
         'offset' => 1,
+        'category_name'      => 'javascript, css, html, web-design',
       ]);
 
       if( $myposts ){
@@ -56,7 +57,7 @@
           <li class="post">
             <?php the_category(); ?>
             <a class="post-permalink" href="<?php get_the_permalink(); ?>" class="">
-            <h4 class=""><?php the_title(); ?></h4>
+            <h4 class=""><?php echo mb_strimwidth(get_the_title(), 0, 60, '...'); ?></h4>
             </a>
           </li>
           <?php 
@@ -72,3 +73,33 @@
     </div>
   </div>
 </main>
+<div class="container">
+<ul class="article-list">  
+<?php
+      global $post;
+
+      $myposts = get_posts([ 
+        'numberposts' => 4,
+        'category_name'      => 'articles',
+      ]);
+
+      if( $myposts ){
+        foreach( $myposts as $post ){
+          setup_postdata( $post );
+          ?>
+          <li class="article-item">
+            <a class="article-permalink" href="<?php get_the_permalink(); ?>" class="">
+            <h4 class="article-title"><?php echo mb_strimwidth(get_the_title(), 0, 50, '...'); ?></h4>
+            </a>
+            <img width="65" height="65" src="<?php echo get_the_post_thumbnail_url( null, 'thumbnail' ); ?>" alt="" class="">
+          </li>
+          <?php 
+              }
+            } else {
+              // Постов не найдено
+              ?> <p class="">Постов не найдено</p> <?php
+            }
+            wp_reset_postdata(); // Сбрасываем $post
+            ?>
+            </ul>
+</div>
