@@ -3,7 +3,6 @@
   <div class="container">
     <div class="hero">
       <div class="left">
-      <span class="REMOVE" style="color: white; z-index: 99; font-size: 25px"></span> 
             <?php
       global $post;
 
@@ -195,9 +194,9 @@
             case'3':
               ?>
               <li class="article-grid-item article-grid-item-3">
-              <a href="<?php the_permalink()?>" class="article-grid-permalink">
-              <img src="<?php echo get_the_post_thumbnail_url(); ?>" alt="" class="article-thumb">
-              <h4 class="article-grid-title"><?php echo mb_strimwidth(get_the_title(), 0, 50, '...') ?></h4>
+              <a href="<?php the_permalink() ?>" class="article-grid-permalink">
+              <img class="article-thumb" src="<?php echo get_the_post_thumbnail_url(); ?>" alt="" >
+              <h4 class="article-grid-title"><?php echo get_the_title() ?></h4>
               </a>
               </li>
               <?php 
@@ -207,7 +206,7 @@
             <li class="article-grid-item article-grid-item-default">
             <a href="<?php the_permalink( ); ?>" class="article-grid-permalink">
             <h4 class="article-grid-title"><?php echo mb_strimwidth(get_the_title(), 0, 50, '...') ?></h4>
-            <p class="article-grid-excerpt"><?php echo get_the_excerpt( ); ?></p>
+            <p class="article-grid-excerpt"><?php echo mb_strimwidth(get_the_excerpt(), 0, 86, '...'); ?></p>
             <span class="article-date"><?php the_time('j F Y'); ?></span>
             </a>
             </li>
