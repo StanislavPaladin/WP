@@ -103,6 +103,7 @@
             ?>
             </ul>
     <!-- article-list -->
+<div class="main-grid">
   <ul class="article-grid">
     <?php		
       global $post;
@@ -165,8 +166,8 @@
                       <div class="author">
                         <?php $author_id = get_the_author_meta('ID') ?>
                         <img src="<?php echo get_avatar_url($author_id) ?>" alt="" class="author-avatar">
-                       <div class="author-info">
-                       <span class="author-name"><strong><?php the_author() ?></strong>
+                        <div class="author-info">
+                        <span class="author-name"><strong><?php the_author() ?></strong>
                         </span>
                         <span class="date"><?php the_time('j F') ?></span>
                       
@@ -181,7 +182,7 @@
                           <span class="likes-counter"><?php comments_number('0', '1', '%') ?></span>
                       </div>
                       <!-- ./likes -->
-                       </div>
+                      </div>
                       </div>
                     </div>
                   </a>
@@ -214,7 +215,6 @@
             <?php
             break;
           }
- 
         }
           } else {
         // Постов не найдено
@@ -223,4 +223,6 @@
       wp_reset_postdata(); // Сбрасываем $post
       ?>
   </ul>
+  <?php get_sidebar(); ?>
+</div>
 </div>
